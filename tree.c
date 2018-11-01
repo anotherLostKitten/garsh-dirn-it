@@ -27,10 +27,12 @@ void perminga(int p){
 }
 void treeinga(char d,char e){
   printf(" ");
-  for(int i=d;i--;)printf("\u2502  ");
+  for(int i=d;i--;)printf("\u2502   ");
   printf("%s\u2500\u2500 ",e?"\u251C":"\u2514");
 }
 int dirinfo(char*name,int depth){
+  if(!depth)
+    printf("           %s.%s\n",BLUE,WHITE);
   DIR*root=opendir(name);
   struct stat*inf=malloc(sizeof(struct stat));
   int ep=strlen(name),dirsize=0;
