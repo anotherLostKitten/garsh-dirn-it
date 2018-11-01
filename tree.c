@@ -17,9 +17,9 @@
 void sizinga(int s){
   if (s>=1024) {
     char logp = log(s)/log(1024);
-    printf("[%s%.1f%cB%s]\n",RED,s/pow(1024,logp),PREFIXES[logp],WHITE);
+    printf("[%s%.1f %cB%s]\n",RED,s/pow(1024,logp),PREFIXES[logp],WHITE);
   }else
-    printf("[%s%dB%s]\n",RED,s,WHITE);
+    printf("[%s%d B%s]\n",RED,s,WHITE);
 }
 void perminga(int p){
     printf("%c",p&S_IFDIR?'d':'-');
@@ -36,7 +36,7 @@ int dirinfo(char*name,int depth){
   int ep=strlen(name),dirsize=0;
   name[ep++]='/';
   for(struct dirent*cur;cur=readdir(root);){
-    if(*cur->d_name=='.')
+    if(!strcmp(cur->d_name,".") || !strcmp(cur->d_name,".."))
       continue;
     strcpy(name+ep,cur->d_name);
     stat(name,inf);
