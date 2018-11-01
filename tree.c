@@ -9,15 +9,17 @@
 #define WHITE "\e[0m"
 #define BLUE "\e[96m"
 #define GREEN "\e[92m"
+#define RED "\e[91m"
+
 #define PERMS "-xwrxwrxwr"
 #define PREFIXES "?KMGT"
 
 void sizinga(int s){
   if (s>=1024) {
     char logp = log(s)/log(1024);
-    printf("[%.1f%cB]\n",s/pow(1024,logp),PREFIXES[logp]);
+    printf("[%s%.1f%cB%s]\n",RED,s/pow(1024,logp),PREFIXES[logp],WHITE);
   }else
-    printf("[%dB]\n",s);
+    printf("[%s%dB%s]\n",RED,s,WHITE);
 }
 void perminga(int p){
     printf("%c",p&S_IFDIR?'d':'-');
@@ -47,10 +49,9 @@ int dirinfo(char*name,int depth){
       sizinga(inf->st_size);
       dirsize+=inf->st_size;
     }
-    
   }
   free(inf);
-  printf(" dir size:");
+  printf("          ");
   treeinga(depth,0);
   sizinga(dirsize);
   return dirsize;
@@ -60,13 +61,5 @@ int dirinfo(char*name,int depth){
 int main(){
   char name[256]=".";
   dirinfo(name, 0);
-  /*
-  printf("Looking at: %s\n", filename);
-  int logp = log(garbagefile->st_size)/log(1024);
-  printf("Exact file size (for larger files) is ");
-  sizinga(garbagefile->st_size,suffixes);
-  printf("\n\nLast time of access: %s\n",ctime(&(garbagefile->st_atime)));
-  */
-
   return 0;
 }
