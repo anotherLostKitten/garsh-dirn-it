@@ -26,6 +26,7 @@ void perminga(int p){
     for(int i=10;--i;)printf("%c",PERMS[i*(p*2>>i&1)]);
 }
 void treeinga(char d,char e){
+  printf(" ");
   for(int i=d;i--;)printf("\u2502  ");
   printf("%s\u2500\u2500 ",e?"\u251C":"\u2514");
 }
