@@ -1,6 +1,6 @@
-all: stats.o
-	gcc stats.o -o stats -lm
-stats.o: stats.c
-	gcc stats.c -c
+all: tree.o
+	gcc tree.o -o tree -lm
+tree.o: tree.c
+	gcc tree.c -c
 run: all
-	./stats
+	./tree
