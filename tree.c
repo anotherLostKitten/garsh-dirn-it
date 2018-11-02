@@ -75,7 +75,6 @@ int main(int argc,char*argv[]){
     printf("Enter directory name:\n");
     scanf("%s",name);
   }
-  printf("\n%s\n",name);
   dirinfo(name,0);
   return 0;
 }
